@@ -284,7 +284,9 @@ public class KThread {
 	
 	Lib.assertTrue(this.joinedThread == null);
 	this.joinedThread = currentThread;
+	boolean intStatus = Machine.interrupt().disable();
 	sleep();
+	Machine.interrupt().restore(intStatus);
     }
 
     /**
